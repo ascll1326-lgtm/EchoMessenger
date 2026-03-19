@@ -9,15 +9,32 @@ namespace EchoMessenger
             InitializeComponent();
         }
 
-        
+
 
         private void btnSend_Click(object sender, EventArgs e)
         {
+
             string typed_msg;
             typed_msg = txtMessage.Text;
-            lstMessageData.Items.Add(typed_msg);
+            if (string.IsNullOrWhiteSpace(txtMessage.Text))
+            {
+                return;
+            }
+                lstMessageData.Items.Add(typed_msg);
             txtMessage.Clear();
-            
+            txtMessage.Focus();
+
         }
+
+        private void txtMessage_KeyDown(object sender, KeyEventArgs e)
+        {
+           
+            if (e.KeyCode == Keys.Enter)
+            {
+                btnSend_Click(sender, e);
+               
+            }
+       
+    }
     }
 }

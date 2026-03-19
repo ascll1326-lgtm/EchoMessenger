@@ -61,6 +61,7 @@
             txtMessage.Size = new Size(1085, 39);
             txtMessage.TabIndex = 2;
             txtMessage.TextChanged += textBox1_TextChanged;
+            txtMessage.KeyDown += txtMessage_KeyDown;
             // 
             // lstMessageData
             // 
@@ -87,7 +88,7 @@
 
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
-            
+           
         }
 
         #endregion
