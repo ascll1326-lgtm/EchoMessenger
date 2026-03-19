@@ -5,6 +5,8 @@
     <TargetFramework>net10.0-windows</TargetFramework>
     <Nullable>enable</Nullable>
     <UseWindowsForms>true</UseWindowsForms>
+    <!-- Prevent SDK from auto-generating assembly attributes because they are defined in Properties\AssemblyInfo.cs -->
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
 
