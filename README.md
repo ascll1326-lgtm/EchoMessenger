@@ -6,9 +6,16 @@
 - 사용한 컨트롤:
 - Label, TextBox, ListBox, Button
 - 사용한 기술과 구현한 기능:
-- Visual Studio를 이용한 UI 디자인하였다.
+- Visual Studio를 이용하여 UI를 디자인하였다.
 -  typed_msg라는 스트링 변수를 텍스트 박스에서 입력받아 Add()메서드로 리스트 박스에 추가하였다.
 -clear()메서드를 이용하여 리스트 박스에 복사된 내용을 텍스트 박스에서 지우도록 구현하였다.
+-focus()메서드를 이용하여 전송 후에 커서가 자동으로 입력창에 위치하도록 구현하였다.
+-KeyDown 이벤트 핸들러를 이용하여 엔터키로도 전송이 되도록 구현하였다.
+- if문을 이용하여 공백문자만 입력된 경우 전송되지 않도록 구현하였다.
+- DateTime.Now.ToString("[HH:mm:ss]")를 이용하여 타임스탬프 기능을 구현하였다.
+- lstMessageData.Items.Count 속성을 이용하여 메세지 개수 카운팅 기능을 구현하였다.
+- Trim()메서드를 이용하여 입력된 메세지의 앞뒤 공백 제거 기능을 구현하였다.
+
 
 
 
@@ -16,11 +23,12 @@
 - 과제1 코드의 실행 스크린샷
 ![과제1 실행화면](img/20260319_173029.gif)
 - 과제 내용
-- Label(표시), TextBox(입력), Button(전송), ListBox(대화창)를 적절히 배치합니다.- 전송 버튼 클릭 시 TextBox의 텍스트를 ListBox의 항목(Items)으로 추가합니다.
+- Label(표시), TextBox(입력), Button(전송), ListBox(대화창)를 적절히 배치합니다.
+- - 전송 버튼 클릭 시 TextBox의 텍스트를 ListBox의 항목(Items)으로 추가합니다.
 - 추가 직후 TextBox의 내용을 비워(Clear) 다음 입력을 준비합니다.
 
 - 구현 내용과 기능 설명
-- 입력창에 메세지를 입력하고 전송 버튼을 클릭하면 입력된 메세지가 대화창에 추가되고 입력창은 비워진다.
+- 입력창에 메세지를 입력하고 전송 버튼을 클릭하면 Add() 메서드를 통해 typed_msg변수에 저장된 메세지가 대화창에 추가되고 Clear()메서드로 입력창이 비워지도록 구현하였다.
 
 
 ## 실행 화면 (과제2)
@@ -43,3 +51,20 @@ private void txtMessage_KeyDown(object sender, KeyEventArgs e)
                
             }
 - if문을 이용하여 공백문자만 입력된 경우 전송되지 않도록 구현하였다.
+
+
+## 실행 화면 (과제3)
+- 과제3 코드의 실행 스크린샷
+![과제3 실행화면](img/20260324_190348.gif)
+- 과제 내용
+- 메시지 앞에 현재 시간([14:20:05])을 자동으로 결합하여 리스트에 출력합니다.
+- 현재 리스트에 쌓인 총 메시지 개수를 계산하여 하단 Label에 실시간으로 업데이트합니다.
+- 사용자가 입력한 메시지의 앞뒤 불필요한 공백을 Trim() 함수로 제거하여 저장합니다.
+
+- 구현 내용과 기능 설명
+- 먼저 string time = DateTime.Now.ToString("[HH:mm:ss]");로 지역 변수를 만들어서 현재 시간을 [HH:mm:ss] 형식으로 저장하였다.
+  그 후 기존의 lstMessageData.Items.Add(typed_msg);  코드에 time과 공백 문자열을 더하는 식으로 타임스탬프를 구현하였고 마지막에 Trim()메서드를 이용하여 앞뒤 공백 제거 기능도 구현하였다.
+  코드는 다음과 같다 lstMessageData.Items.Add(time + " " + typed_msg.Trim());
+-메세지 개수 카운팅 기능은 lstMessageData.Items.Count 속성을 이용하여 lblMessageCount.Text = "현재 대화: " + lstMessageData.Items.Count.ToString() + "개"; 로 구현하였다.
+ 이 기능을 구현하는 도중 계속하여 오류가 나서 알아보니 lstMessageData.Items.Count는 int형이여서 문자열과 더할 수 없기 때문에 나오는 오류였다.
+ 그래서 ToString()메서드를 이용하여 int형을 문자열로 변환하여 해결하였다.

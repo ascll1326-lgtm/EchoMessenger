@@ -32,6 +32,7 @@
             lblAppName = new Label();
             txtMessage = new TextBox();
             lstMessageData = new ListBox();
+            lblMessageCount = new Label();
             SuspendLayout();
             // 
             // btnSend
@@ -71,11 +72,22 @@
             lstMessageData.Size = new Size(1223, 580);
             lstMessageData.TabIndex = 3;
             // 
+            // lblMessageCount
+            // 
+            lblMessageCount.BackColor = SystemColors.Window;
+            lblMessageCount.Location = new Point(1140, 636);
+            lblMessageCount.Name = "lblMessageCount";
+            lblMessageCount.Size = new Size(150, 50);
+            lblMessageCount.TabIndex = 4;
+            lblMessageCount.TextChanged += label1_TextChanged;
+            lblMessageCount.Click += label1_Click;
+            // 
             // Messenger
             // 
             AutoScaleDimensions = new SizeF(14F, 32F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1390, 838);
+            Controls.Add(lblMessageCount);
             Controls.Add(lstMessageData);
             Controls.Add(txtMessage);
             Controls.Add(lblAppName);
@@ -97,5 +109,6 @@
         private Label lblAppName;
         private TextBox txtMessage;
         private ListBox lstMessageData;
+        private Label lblMessageCount;
     }
 }
